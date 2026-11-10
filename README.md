@@ -4,7 +4,7 @@
 
 **Tools:** BigQuery SQL · Python (pandas, seaborn, SciPy) · Tableau Public
 
-**Links:** [Tableau dashboard](https://public.tableau.com/app/profile/mykhailo.myroshnychenko/viz/E-commerceSalesTrafficDashboard/SalesOverview) · [Colab notebook](https://colab.research.google.com/drive/1pkxan0GNN_FnT2qgn7OGj8iW5W8V-EJP?usp=sharing)
+**Links:** [Tableau dashboard](https://public.tableau.com/app/profile/mykhailo.myroshnychenko/viz/E-commerceSalesTrafficDashboard/SalesOverview) · [Colab notebook](https://colab.research.google.com/drive/1OGtSHQL8DobMrh3RQmw6C7YP1ntJdMT1?usp=sharing)
 
 ---
 
@@ -22,12 +22,16 @@ so sessions without an account or an order are kept.
 - **Time:** December is the strongest month (12.4M USD). Tuesday and Wednesday bring about 36% more revenue than weekend days.
 - **Traffic:** daily sessions and sales correlate strongly (Spearman 0.87, p < 0.001), while conversion stays stable at about 9.6%. Growth comes from traffic volume, not from basket size.
 - **Devices:** desktop brings about 59% of sales in every major region; the device mix does not depend on geography or traffic channel.
+- **Users:** unregistered users bring 11x more revenue per day (Mann-Whitney U, p < 0.001), but only because the group is bigger: per session, registered users buy just as much.
+- **Channels:** daily sessions differ significantly between all traffic channels (Kruskal-Wallis H = 248.6, p < 0.001); organic search leads with a median of 1,332 sessions per day.
+- **Regions:** organic search brings the same share of traffic in Europe and the Americas, 35.6% (z-test, p = 0.98).
 
 ## Methods
 
 - Data cleaning: checked types, missing values (explained by `LEFT JOIN`, not errors) and an incomplete period (no sales on Jan 28–31).
 - EDA: sales by continent, country, category, device and traffic channel; pivot tables; daily and weekly dynamics.
-- Statistics: Shapiro-Wilk normality tests, then Spearman or Pearson correlation depending on the distribution.
+- Statistics: Shapiro-Wilk normality tests; Spearman or Pearson correlation depending on the distribution; Mann-Whitney U, Kruskal-Wallis with Bonferroni-corrected pairwise tests, and a z-test for two proportions.
+- Incomplete days (Jan 28–31) excluded from all per-day tests so they do not distort the results.
 
 ## Dashboard
 
